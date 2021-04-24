@@ -10,25 +10,20 @@ class Summary extends Component {
         orderId: "",
         name: "",
         phone: "",
-        status: "",
+        order_status: "",
         referrer: "",
         selctName: "",
         selected: '',
-        refval: [" Vishnu", " Kiran", " Mohan", " Mayur", " Navya", " Nilesh"]
-
+        refval: [" Vishnu", " Kiran", " Mohan", " Mayur", " Navya", " Nilesh", " Swetha", " Kavya", " Sampath", " Jeevamrut", " Sonali"]
     }
 
     componentDidMount() {
         fetch('http://localhost:4300/api/product/open')
             .then(res => res.json())
             .then((data) => {
-                this.setState({ todos: data, selected:'' })
+                this.setState({ todos: data, selected: '' })
             })
             .catch(console.log)
-    }
-    onClickHandler(event, index) {
-        console.log(this.state);
-        console.log(index);
     }
     handleSubmit(event) {
         console.log(this.state);
@@ -40,7 +35,7 @@ class Summary extends Component {
             orderId: this.state.todos[selectedValue[0]].orderId,
             name: this.state.todos[selectedValue[0]].name,
             phone: this.state.todos[selectedValue[0]].phone,
-            status: this.state.todos[selectedValue[0]].status,
+            order_status: this.state.todos[selectedValue[0]].order_status,
             refferal: selectedValue[1],
             amount: this.state.todos[selectedValue[0]].amount,
             incentive: this.state.todos[selectedValue[0]].incentive,
@@ -63,8 +58,8 @@ class Summary extends Component {
         }).catch(error => { console.error('Error:', error); });
     }
     handleClear = (e) => {
-        this.setState({selected:""})
-     }     
+        this.setState({ selected: "" })
+    }
     render() {
         return (
             <div className="container">
@@ -87,7 +82,7 @@ class Summary extends Component {
                                 <div className="col-sm"> {todo.orderId} </div>
                                 <div className="col-sm"> {todo.name} </div>
                                 <div className="col-sm"> {todo.phone} </div>
-                                <div className="col-sm"> {todo.status} </div>
+                                <div className="col-sm"> {todo.order_status} </div>
                                 <div className="col-sm">
                                     <div className="dropdown">
                                         <select className="custom-select" value={this.state.selected} onChange={this.handleChange.bind(this)}>
