@@ -18,7 +18,7 @@ class Summary extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:4300/api/product/open')
+        fetch('http://192.168.29.12:4300/api/product/open')
             .then(res => res.json())
             .then((data) => {
                 this.setState({ todos: data, selected: '' })
@@ -42,7 +42,7 @@ class Summary extends Component {
             id: this.state.todos[selectedValue[0]].id
         }
 
-        fetch('http://localhost:4300/api/product', {
+        fetch('http://192.168.29.12:4300/api/product', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

@@ -5,7 +5,7 @@ class Summary extends Component {
         todos: []
     }
     componentDidMount() {
-        fetch('http://localhost:4300/api/refsum')
+        fetch('http://192.168.29.12:4300/api/refsum')
             .then(res => res.json())
             .then((data) => {
                 this.setState({ todos: data })
