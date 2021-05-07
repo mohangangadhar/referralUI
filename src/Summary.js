@@ -12,7 +12,7 @@ class Summary extends Component {
       orderVal: [],
       productVal: [],
       inputValue: '',
-      url: "https://dejhy5z2ec.execute-api.us-east-1.amazonaws.com/order",
+      url: "https://vbir42yi9a.execute-api.us-east-1.amazonaws.com/order",
       referral: '',
       refval: ["Vishnu", "Kiran", "Mohan", "Mayur", "Navya", "Nilesh", "Swetha", "Kavya", "Sampath", "Jeevamrut", "Sonali"],
       orderInfo: {
