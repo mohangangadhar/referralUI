@@ -12,7 +12,7 @@ class Summary extends Component {
       orderVal: [],
       productVal: [],
       inputValue: '',
-      url: "https://dejhy5z2ec.execute-api.us-east-1.amazonaws.com/order/",
+      url: "https://dejhy5z2ec.execute-api.us-east-1.amazonaws.com/order",
       referral: '',
       refval: ["Vishnu", "Kiran", "Mohan", "Mayur", "Navya", "Nilesh", "Swetha", "Kavya", "Sampath", "Jeevamrut", "Sonali"],
       orderInfo: {
@@ -57,7 +57,7 @@ class Summary extends Component {
     });
   }
   searchOrder() {
-    fetch(this.state.url + this.state.inputValue)
+    fetch(this.state.url +'/'+ this.state.inputValue)
       .then(res => res.json())
       .then((data) => {
         this.setState({
