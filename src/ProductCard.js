@@ -13,13 +13,31 @@ class ProductCard extends Component {
         const currentState = product;
         const { name, value } = event.target;
         currentState[name] = value;
-        console.log(name);
-        console.log(value);
-        console.log(currentState);
+        this.setState({
+            product: currentState
+        });
+    }
+
+    saveProduct() {
+        const { product } = { ...this.state };
+        const currentState = product;
         currentState["type"] = "product";
         this.setState({
             product: currentState
         });
+
+        fetch(this.props.url, {
+            method: 'PUT', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': 'true'
+            },
+            body: JSON.stringify(this.state.product),
+        })
+            .then(response => response.json())
+            .then(data => { console.log('Success:', data); })
+            .catch((error) => { console.error('Error:', error); });
     }
 
     render() {

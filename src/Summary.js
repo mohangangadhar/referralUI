@@ -43,7 +43,7 @@ class Summary extends Component {
     });
   }
   searchOrder() {
-    fetch(this.state.url +'/'+ this.state.inputValue)
+    fetch(this.state.url + '/' + this.state.inputValue)
       .then(res => res.json())
       .then((data) => {
         this.setState({
@@ -141,7 +141,11 @@ class Summary extends Component {
  "updatedAt": 5,
  "productId": 4024 */}
           {this.state.productVal.map((product, index) => (
-            <ProductCard product={product} index={index} key={index} refval={this.state.refval} item_status={this.state.product_status}/>
+            <ProductCard product={product} index={index}
+              key={index}
+              refval={this.state.refval}
+              item_status={this.state.product_status}
+              url={this.state.url} />
           ))}
 
         </div>
