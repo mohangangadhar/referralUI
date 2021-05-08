@@ -4,6 +4,7 @@ class ProductCard extends Component {
     constructor(props) {
         super(props);
         this.updateValue = this.updateValue.bind(this);
+        this.saveProduct = this.saveProduct.bind(this);
         this.state = {
             product: this.props.product
         }
@@ -104,7 +105,7 @@ class ProductCard extends Component {
                             <label className="col-sm-3 col-form-label col-form-label-md">{this.state.product.total} </label>
                         </div>
                         <div className="form-group row">
-                            <button type="button" className="col-sm-2 col-form-label btn btn-primary btn-md">Save</button>
+                            <button type="button" className="col-sm-2 col-form-label btn btn-primary btn-md" onClick={this.saveProduct}>Save</button>
                         </div>
                     </div>
                 </form>
