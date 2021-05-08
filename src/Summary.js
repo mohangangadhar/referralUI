@@ -15,6 +15,7 @@ class Summary extends Component {
       url: "https://evening-waters-68895.herokuapp.com/https://6fu3ib3a7f.execute-api.us-east-1.amazonaws.com/order",
       referral: '',
       refval: ["Vishnu", "Kiran", "Mohan", "Mayur", "Navya", "Nilesh", "Swetha", "Kavya", "Sampath", "Jeevamrut", "Sonali"],
+      product_status: ["Delivered", "Not Delivered", "Out For Delivery", "On Hold", "Cancelled", "No Stock"],
       orderInfo: {
         orderId: "",
         id: "",
@@ -25,21 +26,6 @@ class Summary extends Component {
         paymentType: "Cash on delivery"
       }
     }
-  }
-  componentWillUnmount() {
-    // console.log(JSON.parse(this.state.dataVal.order_result));
-  }
-  componentDidMount() {
-
-    // fetch('https://dejhy5z2ec.execute-api.us-east-1.amazonaws.com/order/5848')
-    //   .then(res => res.json())
-    //   .then((data) => {
-    //     this.setState({
-    //       orderVal: JSON.parse(data.order_result).Items,
-    //       productVal: JSON.parse(data.product_result).Items
-    //     });
-    //   })
-    //   .catch(console.log)
   }
   updateInputValue(event) {
     this.setState({
@@ -117,7 +103,7 @@ class Summary extends Component {
                 <div className="form-group row">
                   <label className="col-sm-2 col-form-label col-form-label-md">Total :</label>
                   <label className="col-sm-4 col-form-label col-form-label-md">
-                    <span className="text-info bg-green">{order.total}</span>
+                    <button className="btn btn-info btn-disabled">{order.total}</button>
                   </label>
                   <label className="col-sm-2 col-form-label col-form-label-md">Referral  :</label>
 
@@ -155,7 +141,7 @@ class Summary extends Component {
  "updatedAt": 5,
  "productId": 4024 */}
           {this.state.productVal.map((product, index) => (
-            <ProductCard product={product} index={index} key={index} refval={this.state.refval} />
+            <ProductCard product={product} index={index} key={index} refval={this.state.refval} item_status={this.state.product_status}/>
           ))}
 
         </div>
