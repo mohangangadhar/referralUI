@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NotificationManager } from 'react-notifications';
 
 class ProductCard extends Component {
     constructor(props) {
@@ -37,8 +38,14 @@ class ProductCard extends Component {
             body: JSON.stringify(this.state.product),
         })
             .then(response => response.json())
-            .then(data => { console.log('Success:', data); })
-            .catch((error) => { console.error('Error:', error); });
+            .then(data => {
+                console.log('Success:', data);
+                NotificationManager.success('You changes have been updated!', 'Successful!', 1000);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                NotificationManager.error('Error while making your changes, contact support!', 'Error!');
+            });
     }
 
     render() {
