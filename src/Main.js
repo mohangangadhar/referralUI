@@ -8,6 +8,10 @@ import Home from "./Home";
 import Summary from "./Summary";
 import Order from "./OrderMatching";
 
+// React Notification
+import 'react-notifications/lib/notifications.css';
+import { NotificationContainer } from 'react-notifications';
+
 class Main extends Component {
     render() {
         return (
@@ -24,7 +28,7 @@ class Main extends Component {
                         <Route exact path="/" component={Home} />
                         <Route path="/summary" component={Summary} />
                         <Route path="/OrderMatching" component={Order} />
-
+                        <NotificationContainer />
                     </div>
                 </div>
             </HashRouter>
