@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ProductCard from './ProductCard.js';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 
 class Summary extends Component {
   constructor(props) {
@@ -66,8 +67,30 @@ class Summary extends Component {
       body: JSON.stringify(this.state.orderInfo),
     })
       .then(response => response.json())
-      .then(data => { console.log('Success:', data); })
+      .then(data => { console.log('Success:', data); this.createNotification('success', 'Your change has been saved') })
       .catch((error) => { console.error('Error:', error); });
+  }
+  createNotification = (type, message) => {
+    return () => {
+      switch (type) {
+        case 'info':
+          NotificationManager.info(message);
+          break;
+        case 'success':
+          NotificationManager.success(message, 'Success');
+          break;
+        case 'warning':
+          NotificationManager.warning('Warning message', 'Close after 3000ms', 3000);
+          break;
+        case 'error':
+          NotificationManager.error('Error message', 'Click me!', 5000, () => {
+            alert('callback');
+          });
+          break;
+        default :  
+          break;
+      }
+    }
   }
   render() {
     return (
