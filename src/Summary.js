@@ -51,7 +51,10 @@ class Summary extends Component {
   render() {
     const orderVal = this.state.orderVal;
     const loading = this.state.loading;
+    const productVal = this.state.productVal;
     let orders;
+    let products;
+
     if (orderVal === null || loading) {
       orders = <Spinner />;
     } else {
@@ -61,6 +64,14 @@ class Summary extends Component {
             refval={this.state.refval}
             url={this.state.url} />
         ))
+        products = productVal.map((product, index) => (
+          <ProductCard product={product} index={index}
+            key={index}
+            refval={this.state.refval}
+            item_status={this.state.product_status}
+            url={this.state.url} />
+        ))
+
       } else {
         orders = <h3 className="text-center">There is no order recored!</h3>;
       }
@@ -82,14 +93,7 @@ class Summary extends Component {
             </div>
           </div>
           {orders}
-          {this.state.productVal.map((product, index) => (
-            <ProductCard product={product} index={index}
-              key={index}
-              refval={this.state.refval}
-              item_status={this.state.product_status}
-              url={this.state.url} />
-          ))}
-
+          {products}
         </div>
       </div>
     );
