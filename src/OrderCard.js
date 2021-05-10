@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NotificationManager } from 'react-notifications';
+import { NotificationManager } from "react-notifications";
 
 class OrderCard extends Component {
     constructor(props) {

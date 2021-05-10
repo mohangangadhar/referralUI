@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NotificationManager } from "react-notifications";
 import ProductCard from './ProductCard.js';
 import OrderCard from './OrderCard.js';
 import Spinner from './spinner.js';
@@ -55,7 +56,12 @@ class Summary extends Component {
           loading: false
         });
       })
-      .catch(console.log)
+      .catch((error) => {
+        NotificationManager.error('Unable to retreive your record', 'Failed!');
+        this.setState({
+          loading: false
+        })
+      })
   }
 
   render() {
