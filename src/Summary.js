@@ -13,10 +13,20 @@ class Summary extends Component {
       orderVal: [],
       productVal: [],
       inputValue: '',
-      url: "https://evening-waters-68895.herokuapp.com/https://6fu3ib3a7f.execute-api.us-east-1.amazonaws.com/order",
+      url: "https://evening-waters-68895.herokuapp.com/https://l1hrsczhjg.execute-api.us-east-1.amazonaws.com/order",
       referral: '',
       refval: ["Vishnu", "Kiran", "Mohan", "Mayur", "Navya", "Nilesh", "Swetha", "Kavya", "Sampath", "Jeevamrut", "Sonali"],
-      product_status: ["Delivered", "Not Delivered", "Out For Delivery", "On Hold", "Cancelled", "No Stock"],
+      //      product_status: ["Delivered", "Not Delivered", "Out For Delivery", "On Hold", "Cancelled", "No Stock"],
+      product_status: ["Picked", "Packed", "Shipped", "Out For Delivery", "Delivered", "Returned", "Rejected"],
+      product_status_key: {
+        "Picked": "picked",
+        "Packed": "packed",
+        "Shipped": "shipped",
+        "Out For Delivery": "outfordelivery",
+        "Delivered": "delivered",
+        "Returned": "returned",
+        "Rejected": "rejectedby",
+      },
       orderInfo: {
         orderId: "",
         id: "",
@@ -69,6 +79,7 @@ class Summary extends Component {
             key={index}
             refval={this.state.refval}
             item_status={this.state.product_status}
+            product_status_key={this.state.product_status_key}
             url={this.state.url} />
         ))
 

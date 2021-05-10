@@ -47,30 +47,27 @@ class OrderCard extends Component {
                 <div className="card-body">
                     <div className="form-group row">
                         <label className="col-sm-2 col-form-label col-form-label-md">Order No :</label>
-                        <label className="col-sm-4 col-form-label col-form-label-md">{this.state.orderInfo.orderId}</label>
-                        <label className="col-sm-2 col-form-label col-form-label-md">Name :</label>
-                        <label className="col-sm-4 col-form-label col-form-label-md">{this.state.orderInfo.custFirstName} {this.state.orderInfo.custLastName} </label>
+                        <label className="col-sm-2 col-form-label col-form-label-md">{this.state.orderInfo.orderId}</label>
+                        <label className="col-sm-1 col-form-label col-form-label-md">Name :</label>
+                        <label className="col-sm-3 col-form-label col-form-label-md">{this.state.orderInfo.custFirstName} {this.state.orderInfo.custLastName} </label>
+                        <label className="col-sm-1 col-form-label col-form-label-md">Email :</label>
+                        <label className="col-sm-3 col-form-label col-form-label-md">{this.state.orderInfo.email}</label>
                     </div>
                     <div className="form-group row">
-                        <label className="col-sm-2 col-form-label col-form-label-md">Email :</label>
-                        <label className="col-sm-4 col-form-label col-form-label-md">{this.state.orderInfo.email}</label>
-                        <label className="col-sm-2 col-form-label col-form-label-md">Phone :</label>
-                        <label className="col-sm-4 col-form-label col-form-label-md">{this.state.orderInfo.phone} </label>
-                    </div>
-                    <div className="form-group row">
-                        <label className="col-sm-2 col-form-label col-form-label-md">Total :</label>
-                        <label className="col-sm-4 col-form-label col-form-label-md">
-                            <button className="btn btn-info btn-disabled">{this.state.orderInfo.total}</button>
-                        </label>
                         <label className="col-sm-2 col-form-label col-form-label-md">Referral  :</label>
-
                         {this.state.orderInfo.referral.length < 0 ?
-                            <label className="col-sm-4 col-form-label col-form-label-md"> {this.state.orderInfo.referral} </label> :
-                            (<div className="col-sm-3 dropdown">
+                            <label className="col-sm-2 col-form-label col-form-label-md"> {this.state.orderInfo.referral} </label> :
+                            (<div className="col-sm-2 dropdown">
                                 <select name="referral" className="custom-select" value={this.state.orderInfo.referral} onChange={this.updateReferral} >
                                     <option>Select..</option> {this.props.refval.map((val) => (<option value={val}>{val}</option>))};
-                          </select>
+                                </select>
                             </div>)}
+                        <label className="col-sm-1 col-form-label col-form-label-md">Phone :</label>
+                        <label className="col-sm-3 col-form-label col-form-label-md">{this.state.orderInfo.phone} </label>
+                        <label className="col-sm-1 col-form-label col-form-label-md">Total :</label>
+                        <label className="col-sm-3 col-form-label col-form-label-md">
+                            <button className="btn btn-info btn-disabled"> Rs {this.state.orderInfo.total} /-</button>
+                        </label>
                     </div>
                     <div className="form-group row">
                         <label className="col-sm-2 col-form-label col-form-label-md">Comments :</label>
@@ -81,7 +78,6 @@ class OrderCard extends Component {
                     </div>
                 </div>
             </div>
-
         )
     }
 }
