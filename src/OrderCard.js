@@ -23,7 +23,7 @@ class OrderCard extends Component {
     }
     saveOrder() {
         console.log(this.state.orderInfo);
-        fetch(this.state.url, {
+        fetch(this.props.url, {
             method: 'PUT', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -87,7 +87,8 @@ class OrderCard extends Component {
                                 <option>Select..</option>
                                 {this.props.item_status.map((val) => (<option value={val}>{val}</option>))};
                             </select>
-                        </div>                    </div>
+                        </div>
+                    </div>
                     <div className="form-group row">
                         <label className="col-sm-2 col-form-label col-form-label-md">Comments :</label>
                         <input type="text" name="comments" className="col-sm-8 form-control" onChange={this.updateValue}></input>
