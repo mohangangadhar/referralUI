@@ -78,6 +78,7 @@ class Summary extends Component {
         orders = orderVal.map((order, index) => (
           <OrderCard orderInfo={order} index={index} key={index}
             refval={this.state.refval}
+            item_status={this.state.product_status}
             url={this.state.url} />
         ))
         products = productVal.map((product, index) => (

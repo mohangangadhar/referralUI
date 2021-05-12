@@ -6,9 +6,20 @@ class OrderCard extends Component {
         super(props);
         this.updateReferral = this.updateReferral.bind(this);
         this.saveOrder = this.saveOrder.bind(this);
+        this.updateValue = this.updateValue.bind(this);
         this.state = {
             orderInfo: this.props.orderInfo
         }
+    }
+    updateValue(event) {
+        const { orderInfo } = { ...this.state };
+        const currentState = orderInfo;
+        const { name, value } = event.target;
+        currentState[name] = value;
+        this.setState({
+            orderInfo: currentState
+        });
+
     }
     saveOrder() {
         console.log(this.state.orderInfo);
@@ -54,7 +65,7 @@ class OrderCard extends Component {
                         <label className="col-sm-3 col-form-label col-form-label-md">{this.state.orderInfo.email}</label>
                     </div>
                     <div className="form-group row">
-                        <label className="col-sm-2 col-form-label col-form-label-md">Referral  :</label>
+                        <label className="col-sm-2 col-form-label col-form-label-md">Referral :</label>
                         {this.state.orderInfo.referral.length < 0 ?
                             <label className="col-sm-2 col-form-label col-form-label-md"> {this.state.orderInfo.referral} </label> :
                             (<div className="col-sm-2 dropdown">
@@ -65,13 +76,21 @@ class OrderCard extends Component {
                         <label className="col-sm-1 col-form-label col-form-label-md">Phone :</label>
                         <label className="col-sm-3 col-form-label col-form-label-md">{this.state.orderInfo.phone} </label>
                         <label className="col-sm-1 col-form-label col-form-label-md">Total :</label>
-                        <label className="col-sm-3 col-form-label col-form-label-md">
+                        <label className="col-sm-2 col-form-label col-form-label-md">
                             <button className="btn btn-info btn-disabled"> Rs {this.state.orderInfo.total} /-</button>
                         </label>
                     </div>
                     <div className="form-group row">
+                        <label className="col-sm-2 col-form-label col-form-label-md">Order Status :</label>
+                        <div className="col-sm-3 dropdown">
+                            <select className="custom-select" name="product_status" value={this.state.orderInfo.product_status} onChange={this.updateValue} >
+                                <option>Select..</option>
+                                {this.props.item_status.map((val) => (<option value={val}>{val}</option>))};
+                            </select>
+                        </div>                    </div>
+                    <div className="form-group row">
                         <label className="col-sm-2 col-form-label col-form-label-md">Comments :</label>
-                        <input type="text" className="col-sm-9 form-control"></input>
+                        <input type="text" name="comments" className="col-sm-8 form-control" onChange={this.updateValue}></input>
                     </div>
                     <div className="form-group row">
                         <button type="button" onClick={this.saveOrder} className="col-sm-2 col-form-label btn btn-primary btn-md">Save</button>
