@@ -53,7 +53,7 @@ class ProductCard extends Component {
     }
 
     render() {
-        let productName = this.state.product.name;
+        let productName = this.state.product.name + " - ";
         if (this.state.product.Rejected) {
             productName += " Rejected By " + this.state.product.Rejected;
         } else if (this.state.product.Returned) {
@@ -80,6 +80,12 @@ class ProductCard extends Component {
                             </label>
                         </div>
                         <div className="form-group row">
+                            <label className="col-sm-2 col-form-label col-form-label-md">Ordered :</label>
+                            <label className="col-sm-1 col-form-label col-form-label-md">{this.state.product.ordered_quantity} </label>
+                            <label className="col-sm-2 col-form-label col-form-label-md">Delivered :</label>
+                            <label className="col-sm-1 col-form-label col-form-label-md">{this.state.product.delivered_quantity} </label>
+                        </div>
+                        <div className="form-group row">
                             <label className="col-sm-2 col-form-label col-form-label-md">Product Status :</label>
                             <div className="col-sm-3 dropdown">
                                 <select className="custom-select" name="product_status" value={this.state.product.product_status} onChange={this.updateValue} >
@@ -93,6 +99,9 @@ class ProductCard extends Component {
                                     <option>Select..</option>
                                     {this.props.refval.map((val) => (<option value={val}>{val}</option>))};
                             </select>
+                            </div>
+                            <div>
+                                <input type="text" name="delivered_quantity" value={this.state.product.delivered_quantity} className="col-sm-8 form-control" onChange={this.updateValue}></input>
                             </div>
                         </div>
                         <div className="form-group row">
