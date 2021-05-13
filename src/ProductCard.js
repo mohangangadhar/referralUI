@@ -101,6 +101,7 @@ class ProductCard extends Component {
                             </select>
                             </div>
                             <div>
+                                <label className="col-sm-1  col-form-label col-form-label-md">Qty :</label>
                                 <input type="text" name="delivered_quantity" value={this.state.product.delivered_quantity} className="col-sm-8 form-control" onChange={this.updateValue}></input>
                             </div>
                         </div>
