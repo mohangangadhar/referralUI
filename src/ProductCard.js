@@ -80,28 +80,25 @@ class ProductCard extends Component {
                             </label>
                         </div>
                         <div className="form-group row">
-                            <label className="col-sm-2 col-form-label col-form-label-md">Ordered :</label>
-                            <label className="col-sm-1 col-form-label col-form-label-md">{this.state.product.ordered_quantity} </label>
-                            <label className="col-sm-2 col-form-label col-form-label-md">Delivered :</label>
-                            <label className="col-sm-1 col-form-label col-form-label-md">{this.state.product.delivered_quantity} </label>
+                            <label className="col-sm-2 col-form-label col-form-label-md">Ordered : {this.state.product.ordered_quantity} </label>
+                            <label className="col-sm-2 col-form-label col-form-label-md">Delivered : {this.state.product.delivered_quantity}</label>
                         </div>
                         <div className="form-group row">
-                            <label className="col-sm-2 col-form-label col-form-label-md">Product Status :</label>
-                            <div className="col-sm-3 dropdown">
+                            {/* <label className="col-sm-2 col-form-label col-form-label-md">Product Status :</label> */}
+                            <div className="col-sm-2 dropdown">
                                 <select className="custom-select" name="product_status" value={this.state.product.product_status} onChange={this.updateValue} >
-                                    <option>Select..</option>
+                                    <option>Product     Status..</option>
                                     {this.props.item_status.map((val) => (<option value={val}>{val}</option>))};
                             </select>
                             </div>
-                            <label className="col-sm-1  col-form-label col-form-label-md">Person :</label>
+                            {/* <label className="col-sm-1  col-form-label col-form-label-md">Person :</label> */}
                             <div className="col-sm-2 dropdown">
                                 <select className="custom-select" name="person_name" value={this.state.product.person_name} onChange={this.updateValue}>
-                                    <option>Select..</option>
+                                    <option>Person..</option>
                                     {this.props.refval.map((val) => (<option value={val}>{val}</option>))};
                             </select>
                             </div>
-                            <div>
-                                <label className="col-sm-1  col-form-label col-form-label-md">Qty :</label>
+                            <div className="col-sm-1">
                                 <input type="text" name="delivered_quantity" value={this.state.product.delivered_quantity} className="col-sm-8 form-control" onChange={this.updateValue}></input>
                             </div>
                         </div>
