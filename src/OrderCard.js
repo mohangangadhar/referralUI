@@ -22,7 +22,13 @@ class OrderCard extends Component {
 
     }
     saveOrder() {
-        console.log(this.state.orderInfo);
+        const { orderInfo } = { ...this.state };
+        const currentState = orderInfo;
+        currentState["type"] = "order";
+        this.setState({
+            orderInfo: currentState
+        });
+
         fetch(this.props.url, {
             method: 'PUT', // or 'PUT'
             headers: {
@@ -47,7 +53,6 @@ class OrderCard extends Component {
         const currentState = orderInfo;
         const { name, value } = event.target;
         currentState[name] = value;
-        currentState["type"] = "order";
         this.setState({
             orderInfo: currentState
         });
